@@ -12,12 +12,11 @@ module.exports = function(app) {
     })
 
     app.post('/uploadSong', (req,res) => {
-        const newSong = new Song(req.body)
+        newSong = new Songs(req.body);
 
-        newSong
-            .save((err, newSong) => {
+        newSong.save((err, newSong) => {
                 if(err) console.log(err)
-                return res.redirect('/')
+                else res.redirect('/')
             })
     })
 
@@ -29,7 +28,7 @@ module.exports = function(app) {
         })
 
         if(songUpdate.artist) {
-            songUpdate.artist = "Janis Joplin"
+            songUpdate.artist = req.body.artist
             songUpdate.save((err, updatedSong) => {
                 if(err) console.log(err)
                 return res.json(updatedSong)
@@ -39,17 +38,24 @@ module.exports = function(app) {
     
     })
 
-    app.delete('/removeSong', (req, res) => {
-    const songDelete = null
-        Songs.find({_id: req.body.ObjectId}, (err, songs) => {
+    app.delete('/removeSong/:id', (req, res) => {
+        // #const id = req.params.id;
+    let songDelete = req.params.id
+    console.log("here first")
+        Songs.find({_id: req.params.id}, (err, songs) => {
+            //getting into this code block alright
             if(err) console.log(err)
             else songDelete = songs
         })
-
+        console.log("Here five")
         if(songDelete) {
-            songDelete.delete({songDelete}, (err, deletedSong) => {
+            console.log("here three")
+            Songs.deleteOne({songDelete}, (err, deletedSong) => {
+                console.log("before delete json")
             if(err) console.log(err)
-            else res.json(deletedSong)
+            else res.json(deletedSong) 
+            console.log(songDelete)
+            
         })}
     })
 
