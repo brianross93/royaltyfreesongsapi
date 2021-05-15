@@ -10,7 +10,7 @@ module.exports = function(app) {
             else(res.json(songs))
         })
     })
-
+    //uploads a song to the database with an api call
     app.post('/uploadSong', (req,res) => {
         newSong = new Songs(req.body);
 
@@ -19,7 +19,7 @@ module.exports = function(app) {
                 else res.redirect('/')
             })
     })
-
+    //updates a song in the database with an api call
     app.put('/updateSong', (req, res) => {
         const songUpdate = null
         Songs.find({_id: req.body.ObjectId}, (err, songs) => {
@@ -37,7 +37,7 @@ module.exports = function(app) {
         }
     
     })
-
+    //deletes a song from the database
     app.delete('/removeSong/:id', (req, res) => {
         // #const id = req.params.id;
     let songDelete = req.params.id
