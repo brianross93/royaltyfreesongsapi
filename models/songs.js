@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+
+//Song Database Model. It should take in an artist, song_title, album, and song_url
 const SongSchema = new Schema({
     artist: {type:String, required: true},
     song_title: {type:String, required: true},

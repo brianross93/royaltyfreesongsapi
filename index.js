@@ -20,10 +20,7 @@ require('./controllers/songs.js')(app)
 app.get('/', (req,res) => {
     res.send('splash page')
 })
-// artist: {type:String, required: true},
-//     song_title: {type:String, required: true},
-//     album: {type:String, required: true},
-//     song_url: {type:String, required: true}
+
 
 
 

@@ -3,7 +3,7 @@ const { bulkWrite } = require('../models/songs')
 const Songs = require('../models/songs')
 
 module.exports = function(app) {
-    
+    //returns all songs in the database
     app.get('/songs', (re, res) => {
         Songs.find({}, (err,songs) => {
             if(err) console.log(err)
@@ -12,14 +12,26 @@ module.exports = function(app) {
     })
     //uploads a song to the database with an api call
     app.post('/uploadSong', (req,res) => {
-        newSong = new Songs(req.body);
+        //the upload song works when I do it manually here, having a hard time 
+        //passing in the body into Postman. Maybe because I currently dont have internet?
+        Songs.create({
+            artist : req.body.artist,
+            song_title : req.body.song_title,
+            album : req.body.album,
+            song_url : req.body.song_url
+        }, function(err, newSong) {
+            if (err)
+                res.send(err);
+            else res.redirect('/')
+        })
 
-        newSong.save((err, newSong) => {
-                if(err) console.log(err)
-                else res.redirect('/')
-            })
+        // newSong.save((err, newSong) => {
+        //         if(err) console.log(err)
+        //         else res.redirect('/')
+        //     })
     })
     //updates a song in the database with an api call
+    //can only update artist as of now
     app.put('/updateSong', (req, res) => {
         const songUpdate = null
         Songs.find({_id: req.body.ObjectId}, (err, songs) => {
