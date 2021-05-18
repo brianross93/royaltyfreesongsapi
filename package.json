@@ -34,5 +34,10 @@
     "nodemon": "^2.0.7",
     "phoenix": "^1.5.9",
     "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.4.0"
   }
 }
