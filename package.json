@@ -13,8 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@heroku/buildpack-registry": "^1.0.1",
     "assert": "^2.0.0",
     "async-file": "^2.0.2",
+    "bufferutil": "^4.0.3",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
     "cli-ux": "^4.9.3",
@@ -28,7 +30,9 @@
     "mongoose": "^5.12.9",
     "nodemon": "^2.0.7",
     "phoenix": "^1.5.9",
-    "valid-url": "^1.0.9"
+    "utf-8-validate": "^5.0.5",
+    "valid-url": "^1.0.9",
+    "ws": "^7.4.5"
   },
   "devDependencies": {
     "chai": "^4.3.4",
